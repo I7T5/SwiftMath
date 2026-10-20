@@ -92,7 +92,7 @@ private class BundleManager {
                                                 attributes: .concurrent)
 
     private func registerCGFont(mathFont: MathFont) throws {
-        guard let frameworkBundleURL = Bundle.module.url(forResource: "mathFonts", withExtension: "bundle"),
+        guard let frameworkBundleURL = Bundle.swiftMath.url(forResource: "mathFonts", withExtension: "bundle"),
               let resourceBundleURL = Bundle(url: frameworkBundleURL)?.path(forResource: mathFont.rawValue, ofType: "otf") else {
             throw FontError.fontPathNotFound
         }
@@ -119,7 +119,7 @@ private class BundleManager {
     }
     
     private func registerMathTable(mathFont: MathFont) throws {
-        guard let frameworkBundleURL = Bundle.module.url(forResource: "mathFonts", withExtension: "bundle"),
+        guard let frameworkBundleURL = Bundle.swiftMath.url(forResource: "mathFonts", withExtension: "bundle"),
               let mathTablePlist = Bundle(url: frameworkBundleURL)?.url(forResource: mathFont.rawValue, withExtension:"plist") else {
             throw FontError.fontPathNotFound
         }
